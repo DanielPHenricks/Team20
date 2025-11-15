@@ -1,0 +1,11 @@
+Create a precise 3D model of a this cube arrangement composed of unit cubes arranged in the exact configuration shown. The structure contains cubes in the following colors: deep purple/magenta, light purple/lavender, bright lime green, dark forest green, navy blue, red-orange, gray, and dark navy/black.
+
+Take care in maintaining the exact spatial relationships and color positions of each cube. By moving around the scene, each view should clearly show which cubes are visible from that perspective, with proper occlusion of hidden cubes.
+
+Ensure that:
+    All cube positions remain spatially consistent across all views
+    Each cube maintains its original color
+    The overall structure's dimensions and proportions are preserved
+    Gaps and overhangs in the structure are accurately represented
+    Each orthographic view is properly aligned and scaled
+    Important: these cubes are the only thing in the scene.
