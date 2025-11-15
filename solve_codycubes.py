@@ -56,7 +56,7 @@ def click_answer_and_check(driver, answer_num):
 
         # Click the container
         ActionChains(driver).move_to_element(container).click().perform()
-        time.sleep(1)  # Wait for animation/response
+        time.sleep(0.5)  # Wait for animation/response
 
         # Check if "NEXT PUZZLE" button appears (indicates correct answer)
         try:
@@ -84,6 +84,15 @@ def find_correct_answer(driver):
 
     return None
 
+def get_question_text(driver):
+    """Get the current question text from the page"""
+    try:
+        question_element = driver.find_element(By.ID, "question")
+        return question_element.text
+    except Exception as e:
+        print(f"Error getting question text: {e}")
+        return ""
+
 def click_next_puzzle(driver):
     """Click the next puzzle button using JavaScript to avoid interception"""
     try:
@@ -92,7 +101,7 @@ def click_next_puzzle(driver):
         )
         # Use JavaScript click to avoid element interception issues
         driver.execute_script("arguments[0].click();", next_button)
-        time.sleep(2)  # Wait for next puzzle to load
+        time.sleep(0.5)  # Wait for next puzzle to load
         return True
     except Exception as e:
         print(f"Error clicking next puzzle: {e}")
@@ -100,10 +109,10 @@ def click_next_puzzle(driver):
 
 def main():
     url = "https://codycubes.geody.games/play"
-    num_iterations = 100  # Number of puzzles to solve
-    start_iteration = 3
-    screenshot_dir = "screenshots/easy"
-    answers_file = "answers.txt"
+    target_question = "Which object can be created by rotating the object pictured here?"
+    num_rotation_puzzles = 100  # Number of rotation puzzles to collect
+    screenshot_dir = "screenshots/rotations"
+    answers_file = "rotations.txt"
 
     # Setup
     os.makedirs(screenshot_dir, exist_ok=True)
@@ -119,38 +128,64 @@ def main():
 
         # Open answers file
         with open(answers_file, 'a') as f:
-            for i in range(start_iteration, num_iterations + start_iteration):
-                print(f"\n=== Iteration {i+1}/{num_iterations} ===")
+            rotation_count = 0
+            total_puzzles_seen = 0
+            max_attempts = 1000  # Safety limit to avoid infinite loop
 
-                # Take screenshot
-                screenshot_path = f"{screenshot_dir}/{i+1}.png"
-                take_bottom_80_percent_screenshot(driver, screenshot_path)
+            while rotation_count < num_rotation_puzzles and total_puzzles_seen < max_attempts:
+                total_puzzles_seen += 1
 
-                # Find correct answer
-                correct_answer = find_correct_answer(driver)
+                # Get the question text
+                question = get_question_text(driver)
+                print(f"\n=== Puzzle {total_puzzles_seen} ===")
+                print(f"Question: {question}")
 
-                if correct_answer:
-                    # Log the answer
-                    f.write(f"{correct_answer}\n")
-                    f.flush()
-                    print(f"Logged answer: {correct_answer}")
+                # Check if this is a rotation puzzle
+                if question == target_question:
+                    rotation_count += 1
+                    print(f"Found rotation puzzle #{rotation_count}/{num_rotation_puzzles}")
 
-                    # Wait a moment before clicking next
-                    time.sleep(1)
+                    # Take screenshot
+                    screenshot_path = f"{screenshot_dir}/{rotation_count}.png"
+                    take_bottom_80_percent_screenshot(driver, screenshot_path)
 
-                    # Click next puzzle
+                    # Find correct answer
+                    correct_answer = find_correct_answer(driver)
+
+                    if correct_answer:
+                        # Log the answer in format: iteration: answer
+                        f.write(f"{rotation_count}: {correct_answer}\n")
+                        f.flush()
+                        print(f"Logged answer: {rotation_count}: {correct_answer}")
+
+                        # Wait a moment before clicking next
+                        time.sleep(0.5)
+
+                        # Click next puzzle
+                        if not click_next_puzzle(driver):
+                            print("Could not proceed to next puzzle")
+                            break
+                    else:
+                        print("Could not find correct answer!")
+                        f.write(f"{rotation_count}: ERROR\n")
+                        f.flush()
+                        break
+                else:
+                    # Not a rotation puzzle, just skip to next
+                    print("Not a rotation puzzle, skipping...")
+
+                    # Click any answer to proceed
+                    click_answer_and_check(driver, 1)
+                    time.sleep(0.5)
+
                     if not click_next_puzzle(driver):
                         print("Could not proceed to next puzzle")
                         break
-                else:
-                    print("Could not find correct answer!")
-                    f.write("ERROR\n")
-                    f.flush()
-                    break
 
-                time.sleep(1)  # Brief pause between iterations
+                time.sleep(0.5)  # Brief pause between iterations
 
         print("\n=== Complete ===")
+        print(f"Found {rotation_count} rotation puzzles out of {total_puzzles_seen} total puzzles")
         print(f"Screenshots saved to {screenshot_dir}/")
         print(f"Answers logged to {answers_file}")
 
