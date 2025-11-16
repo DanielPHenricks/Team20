@@ -34,6 +34,6 @@ def evaluate_results(data: dict) -> None:
 
 if __name__ == "__main__":
     # Change this to your actual file path
-    path_to_txt = "claude_rotation_responses.txt"
+    path_to_txt = "openai_rotation_responses.txt"
     results = load_results(path_to_txt)
     evaluate_results(results)
