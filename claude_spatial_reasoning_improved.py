@@ -197,8 +197,10 @@ def generate_rotated_images(path, outdir="renders", n=12, img_size=768, problem_
     """
     Generate `n` rotated images of the 3D model at `path` and save them to `outdir`.
     Uses improved rendering with better views and annotations.
+    Files are saved with unique problem number suffix.
     """
-    render_views_improved(glb_path=path, out_dir=outdir, n_views=n, img_size=img_size)
+    # Generate renders with problem number suffix
+    render_views_improved(glb_path=path, out_dir=outdir, n_views=n, img_size=img_size, problem_num=problem_num)
 
     # Define view labels for 12-view system
     view_labels = [
@@ -212,12 +214,15 @@ def generate_rotated_images(path, outdir="renders", n=12, img_size=768, problem_
     annotated_dir = os.path.join(outdir, "annotated")
     os.makedirs(annotated_dir, exist_ok=True)
 
+    # Determine file suffix based on problem number
+    suffix = f"_problem_{problem_num}" if problem_num else ""
+
     for i in range(n):
-        img_path = os.path.join(outdir, f"view_{i:03d}.png")
+        img_path = os.path.join(outdir, f"view_{i:03d}{suffix}.png")
         if os.path.exists(img_path):
             # Create annotated version
             label = view_labels[i] if i < len(view_labels) else f"View {i+1}"
-            annotated_path = os.path.join(annotated_dir, f"view_{i:03d}_annotated.png")
+            annotated_path = os.path.join(annotated_dir, f"view_{i:03d}_annotated{suffix}.png")
             annotate_image(img_path, label, annotated_path)
             image_paths.append(annotated_path)
 
@@ -226,13 +231,23 @@ def generate_rotated_images(path, outdir="renders", n=12, img_size=768, problem_
     return image_paths
 
 
-def solve_problem_two_stage(problem_image_path, cutout_image_path, problem_num=None):
+def solve_problem_two_stage(problem_image_path, cutout_image_path, problem_num=None, skip_glb_generation=False):
     """
     Improved two-stage reasoning approach for better accuracy.
+
+    :param skip_glb_generation: If True, assumes GLB file already exists and skips Meshy API call
     """
-    # Get the meshy model
-    three_d_model_path = "./tmp/preview_model.glb"
-    get_meshy_model(cutout_image_path, three_d_model_path)
+    # Get the meshy model with unique name per problem
+    suffix = f"_problem_{problem_num}" if problem_num else ""
+    three_d_model_path = f"./tmp/preview_model{suffix}.glb"
+
+    # Generate GLB if needed
+    if skip_glb_generation:
+        if not os.path.exists(three_d_model_path):
+            raise FileNotFoundError(f"GLB file not found: {three_d_model_path}. Run generate_glb_files.py first or remove --skip-glb flag.")
+        print(f"Using existing GLB: {three_d_model_path}")
+    else:
+        get_meshy_model(cutout_image_path, three_d_model_path)
 
     # Generate the multiple rotations with improved settings
     rotated_image_paths = generate_rotated_images(three_d_model_path, outdir="renders", n=12, img_size=768, problem_num=problem_num)
@@ -272,6 +287,7 @@ Step 2: For each choice, check if it could be a rotation of the reference object
    - Spatial relationships between colored blocks
 Step 3: Eliminate choices that have mismatched colors or impossible configurations
 Step 4: Verify your final answer by confirming it matches the reference from all angles
+MOST IMPORTANT: Please only use the 6th through the 11th view for your analysis. Also consider shape arrangement more than color arrangement when making a decision.
 
 IMPORTANT:
 - Pay close attention to the exact colors and their positions
@@ -287,13 +303,23 @@ Provide your reasoning step-by-step, then end with ONLY the answer number (1, 2,
     return response
 
 
-def solve_problem_single_stage(problem_image_path, cutout_image_path, problem_num=None):
+def solve_problem_single_stage(problem_image_path, cutout_image_path, problem_num=None, skip_glb_generation=False):
     """
     Original single-stage approach but with improved prompt.
+
+    :param skip_glb_generation: If True, assumes GLB file already exists and skips Meshy API call
     """
-    # Get the meshy model
-    three_d_model_path = "./tmp/preview_model.glb"
-    get_meshy_model(cutout_image_path, three_d_model_path)
+    # Get the meshy model with unique name per problem
+    suffix = f"_problem_{problem_num}" if problem_num else ""
+    three_d_model_path = f"./tmp/preview_model{suffix}.glb"
+
+    # Generate GLB if needed
+    if skip_glb_generation:
+        if not os.path.exists(three_d_model_path):
+            raise FileNotFoundError(f"GLB file not found: {three_d_model_path}. Run generate_glb_files.py first or remove --skip-glb flag.")
+        print(f"Using existing GLB: {three_d_model_path}")
+    else:
+        get_meshy_model(cutout_image_path, three_d_model_path)
 
     # Generate the multiple rotations with improved settings
     rotated_image_paths = generate_rotated_images(three_d_model_path, outdir="renders", n=12, img_size=768, problem_num=problem_num)
@@ -311,8 +337,7 @@ SYSTEMATIC APPROACH:
    - Compare its visible faces with the reference object
    - Check if the color arrangements match
    - Verify the spatial relationships between blocks
-3. Eliminate choices with mismatched colors or impossible configurations
-4. Confirm your answer by double-checking color patterns
+    - Check each set of neighbors of the answer choice with the arrangement in the original image along with the multiple angles to find counterexamples where the answer is wrong.
 
 Think step-by-step through your reasoning, considering:
 - Exact color positions on each face
@@ -336,6 +361,8 @@ if __name__ == "__main__":
     parser.add_argument("--start", type=int, default=1, help="Starting problem number")
     parser.add_argument("--end", type=int, default=29, help="Ending problem number")
     parser.add_argument("--output", default="output-advanced.txt", help="Output file")
+    parser.add_argument("--skip-glb", action="store_true",
+                        help="Skip GLB generation, use existing files (faster if you already ran generate_glb_files.py)")
 
     args = parser.parse_args()
 
@@ -347,6 +374,7 @@ if __name__ == "__main__":
     print(f"Mode: {args.mode}")
     print(f"Problems: {args.start} to {args.end} ({len(problem_numbers)} total)")
     print(f"Output: {args.output}")
+    print(f"GLB Generation: {'Skipped (using existing)' if args.skip_glb else 'Enabled (via Meshy API)'}")
     print(f"Processing: Sequential (to avoid threading issues with PyRender)")
     print(f"{'='*80}\n")
 
@@ -367,7 +395,8 @@ if __name__ == "__main__":
             response = solve_func(
                 f"./screenshots/rotations/{i}.png",
                 f"./screenshots/cropped/{i}.png",
-                problem_num=i
+                problem_num=i,
+                skip_glb_generation=args.skip_glb
             )
 
             with open(args.output, "a") as f:

@@ -1,0 +1,301 @@
+Spatial Reasoning Results - two-stage mode
+Problems 87-100
+================================================================================
+
+87: I'll analyze this systematically by comparing each answer choice to the reference object, focusing on shape arrangement and using views 6-11.
+
+## Reference Object Key Features (from views 6-11):
+
+**Top View (Image 6):** Shows an irregular shape with blocks arranged in a complex pattern - blue blocks on ends, central mass with various colored blocks, stepped arrangement.
+
+**Back-Top-Right (Image 9):** Shows a diagonal view with a distinct layered structure, prominent cyan/teal block on top-right, dark blocks in center, varied colors throughout.
+
+**Back-Top-Left (Image 10):** Shows another diagonal view with green blocks prominent on left side, purple/blue blocks on right, central red/dark blocks, stepped arrangement.
+
+**Front-Top-Left (Image 11):** Shows diagonal view with purple/blue blocks on top-left, dark green blocks prominent, blue block on bottom-right, complex interlocking structure.
+
+**Front-Bottom-Right (Image 12):** Shows cyan block on left, brown/tan blocks, blue blocks, green blocks in middle, stepped diagonal profile.
+
+**Back-Bottom-Left (Image 13):** Shows blue blocks on left, green blocks on top, purple blocks, teal blocks on right, red/dark blocks in center.
+
+## Analyzing Each Choice:
+
+### Choice 1 (leftmost):
+Looking at this tilted view, I can see:
+- Pink/salmon colored blocks prominent on top
+- Blue and cyan blocks
+- Dark green blocks
+- The overall shape profile appears similar to the reference
+- The stepped, irregular arrangement matches
+- Color positions when accounting for rotation seem consistent
+
+### Choice 2:
+- Shows a more flattened arrangement
+- Green blocks prominent
+- Blue blocks visible
+- The spatial arrangement looks different - appears more compressed
+- The profile doesn't match the reference's irregular stepped pattern as well
+
+### Choice 3:
+- Shows prominent purple blocks on top
+- Pink/salmon blocks
+- Green blocks below
+- Dark blocks in center
+- The arrangement appears similar to the reference
+- However, the exact positioning seems slightly off compared to choice 1
+
+### Choice 4:
+- Very similar appearance to choice 3
+- Purple blocks on top
+- Pink blocks
+- Green and dark blocks
+- The profile and arrangement look nearly identical to choice 3
+
+## Detailed Comparison:
+
+Comparing choices 3 and 4 more carefully - they appear nearly identical in the question image, which suggests they might be the same orientation.
+
+Comparing choice 1 to the reference views:
+- The diagonal orientation in choice 1 matches well with Image 10 (Back-Top-Left)
+- The pink/salmon blocks visible in choice 1 correspond to the red/brown blocks in the reference
+- The blue blocks at the extremities match
+- The stepped profile and irregular shape match perfectly
+
+Choice 2 appears too flat and compressed compared to the reference's more complex 3D structure.
+
+Choices 3 and 4 both show similar orientations but when compared to reference views like Image 11 (Front-Top-Left) and Image 12 (Front-Bottom-Right), the block arrangements don't align as precisely as choice 1.
+
+**1**
+
+============================================================
+
+88: I'll analyze this systematically by comparing each answer choice to the reference object, focusing on views 6-11 (Top, Bottom, Front-Top-Right, Back-Top-Right, Back-Top-Left, Front-Top-Left) and prioritizing shape arrangement over color.
+
+## Key Shape Features from Reference Views:
+
+**Top View (Image 6):** 
+- Cross-like or branching pattern
+- Hollow center space
+- Isolated block on lower left
+- Approximately 4-5 units wide, 3-4 units deep
+
+**Bottom View (Image 7):**
+- Similar branching pattern
+- Multiple blocks around edges
+- Central configuration visible
+
+**Front-Top-Right (Image 8):**
+- Stepped/layered structure
+- Extends in multiple directions from center
+
+**Back-Top-Right (Image 9):**
+- Elongated horizontal arrangement
+- Multiple layers visible
+- Blocks extend left-right
+
+**Back-Top-Left (Image 10):**
+- Similar elongated pattern
+- Three distinct height levels
+- Blocks cluster in middle section
+
+**Front-Top-Left (Image 11):**
+- Irregular stepped arrangement
+- Multiple height levels
+- Central mass with extensions
+
+## Analyzing Each Choice:
+
+**Choice 1 (leftmost with cyan border):**
+Looking at the isometric view, this shows:
+- A compact, somewhat irregular cluster
+- Multiple visible faces with purple, green, blue blocks
+- Structure appears to have the right general complexity
+- Arrangement shows blocks extending in multiple directions
+- Has the characteristic hollow center when viewed from certain angles
+
+**Choice 2:**
+- Shows a flatter, more spread-out arrangement
+- Appears more planar/2D-like
+- Different proportions than reference
+- Doesn't match the vertical complexity
+
+**Choice 3:**
+- Shows a more tower-like vertical structure
+- Different height distribution
+- Shape profile doesn't match the branching pattern
+- Too much vertical emphasis
+
+**Choice 4:**
+- Shows an angled/curved arrangement
+- Blocks appear more linearly organized
+- Doesn't match the cross/branching pattern
+- Wrong spatial distribution
+
+## Verification of Choice 1:
+
+Comparing Choice 1 to the reference views:
+- The isometric angle shows similar complexity
+- Block distribution matches the irregular clustering
+- Has appropriate height variation (2-3 levels)
+- Shows the characteristic extensions in multiple directions
+- Purple, blue, green, and cyan blocks are present in plausible positions
+- Overall footprint matches the cross-like pattern from top view
+
+Choice 1 best matches the shape arrangement and spatial relationships of the reference object when considering all the angled views (6-11).
+
+**1**
+
+============================================================
+
+89: I'll analyze this systematically by comparing each answer choice with the reference object using the specified views (6th through 11th: Top, Bottom, Front-Top-Right, Back-Top-Right, Back-Top-Left, Front-Top-Left).
+
+## Step 1: Analyze the Reference Object's Key Shape Features
+
+From the orthographic and 3D views:
+- **Top View (Image 6)**: Shows an irregular footprint with blocks arranged in a complex pattern, extending more left-to-right with some depth
+- **Bottom View (Image 7)**: Similar irregular footprint from below
+- **Various 3D angles**: Show a compact, asymmetric structure with stepped heights
+
+Key shape characteristics:
+- Irregular, non-rectangular footprint
+- Stepped/layered construction
+- Approximately 3-4 blocks wide, 3-4 deep, 2-3 tall
+- Asymmetric design with protruding sections
+
+## Step 2: Examine Each Answer Choice
+
+### **Choice 1 (Top-left):**
+- Shows a relatively flat arrangement
+- Blocks appear spread out in a more planar configuration
+- Less vertical stacking visible
+- Shape appears more scattered/dispersed
+
+### **Choice 2 (Top-right):**
+- Compact, stacked structure
+- Shows clear stepped/layered arrangement
+- Has depth and height similar to reference
+- Irregular footprint matches reference complexity
+
+### **Choice 3 (Bottom-left):**
+- Compact structure with visible stacking
+- Shows stepped arrangement
+- Orientation appears different but structure is similar
+- Has the irregular, asymmetric quality
+
+### **Choice 4 (Bottom-right):**
+- Compact structure
+- Shows clear layering and steps
+- Similar height and depth proportions
+- Irregular footprint present
+
+## Step 3: Detailed Comparison
+
+**Eliminating Choice 1:**
+- The flat, dispersed arrangement doesn't match the reference's compact, stepped structure
+- The spatial relationships appear too spread out
+- Doesn't show the same vertical stacking pattern
+
+**Comparing Choices 2, 3, and 4:**
+
+Looking at the **stepped arrangement pattern**:
+- Reference shows blocks creating an irregular stepped pattern
+- The structure has specific protrusions and recesses
+
+**Choice 2**: 
+- Shows a compact structure with clear steps
+- The arrangement of blocks creates similar irregular edges
+- Depth and layering match the reference
+
+**Choice 3**:
+- Also shows compact structure with steps
+- Orientation suggests a different rotation
+- Block arrangement pattern is consistent with reference
+
+**Choice 4**:
+- Compact with clear layering
+- Shows similar stepped configuration
+- Block spatial relationships match
+
+## Step 4: Final Verification
+
+Focusing on **shape arrangement** over color:
+
+The reference object has a specific configuration where blocks create an irregular, stepped structure with:
+- A wider base
+- Elevated sections creating steps
+- Asymmetric protrusions
+
+**Choice 2** most accurately represents a rotation of this configuration:
+- The stepped pattern is preserved
+- The irregular footprint matches
+- The spatial relationships between blocks are consistent
+- The overall proportions (width, depth, height) align with the reference
+
+2
+
+============================================================
+
+90: I'll analyze this systematically by comparing each answer choice to the reference object, focusing on images 6-11 (Top View, Bottom View, Front-Top-Right, Back-Top-Right, Back-Top-Left, Front-Top-Left).
+
+## Key Features from Reference Images 6-11:
+
+**Top View (Image 6):**
+- Hollow center with blocks arranged around it
+- Isolated dark blue cube in upper right
+- Olive/yellow-green block visible
+- L-shaped or irregular perimeter
+
+**Bottom View (Image 7):**
+- Similar hollow structure
+- Isolated dark blue cube in lower right
+- Maroon blocks visible
+- Browns and greens in lower portion
+
+**3D Angled Views (Images 8-11):**
+- Show the stepped, multi-level structure
+- Isolated dark blue cube maintains position relative to main body
+- Asymmetric configuration with varying heights
+
+## Analysis of Answer Choices:
+
+**Choice 1:**
+- Shows a different viewing angle
+- The structure appears more compact
+- Need to check if isolated cube and hollow center match
+
+**Choice 2:**
+- Has a distinctive tilted appearance
+- Shows separation between main structure and isolated piece
+- The hollow center appears visible
+- Color arrangement needs verification
+
+**Choice 3:**
+- Shows a more unified, compact structure
+- Appears to have similar stepped levels
+- Isolated cube relationship needs checking
+
+**Choice 4:**
+- Nearly identical appearance to Choice 3
+- Same compact structure
+- Similar viewing angle
+
+## Detailed Comparison:
+
+Looking at the **shape arrangement** (as prioritized):
+
+**Choice 1:** The overall shape shows a stepped structure with what appears to be the correct hollow center and separated cube configuration. The general form matches the asymmetric, multi-level structure.
+
+**Choice 2:** This shows a distinctly tilted/rotated view. The separation of the dark blue cube is not visible and prominent. The hollow center structure is apparent. The stepped levels and irregular shape match the reference object's configuration.
+
+**Choice 3 & 4:** These appear nearly identical and show a more consolidated view. However, examining carefully, the spatial relationships and the way the hollow center would appear from this angle seem consistent.
+
+Comparing the stepped arrangement and hollow center visibility:
+- Choice 1 shows clear separation and the distinctive hollow structure
+- The angled perspective in Choice 1 aligns with how the reference object would appear when rotated to show both the hollow center and the isolated cube
+- The multi-level stepping is clearly visible
+
+**Choice 1** best matches the reference object's characteristic features: the hollow center, the isolated cube's position, and the overall asymmetric stepped structure.
+
+1
+
+============================================================

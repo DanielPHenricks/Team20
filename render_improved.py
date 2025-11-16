@@ -137,6 +137,7 @@ def render_views_improved(
     out_dir: str = "renders",
     n_views: int = 12,
     img_size: int = 768,
+    problem_num: int = None,
 ):
     """
     Render improved PNG images with strategic viewing angles and enhanced lighting.
@@ -145,6 +146,7 @@ def render_views_improved(
     :param out_dir: Directory where PNGs will be saved
     :param n_views: Number of views to render (recommended: 12)
     :param img_size: Width/height of output images (recommended: 768 or 1024)
+    :param problem_num: Problem number to append as suffix to filenames
     """
     os.makedirs(out_dir, exist_ok=True)
 
@@ -178,6 +180,9 @@ def render_views_improved(
             rot_y = trimesh.transformations.rotation_matrix(theta, [0, 1, 0])
             views.append({'rotation': rot_y, 'label': f'View {i+1}'})
 
+    # Determine file suffix based on problem number
+    suffix = f"_problem_{problem_num}" if problem_num else ""
+
     # Render each view
     for i, view_info in enumerate(views[:n_views]):
         rotation = view_info['rotation']
@@ -186,7 +191,7 @@ def render_views_improved(
         scene.set_pose(mesh_node, pose=rotation)
         color, _ = renderer.render(scene)
 
-        out_path = os.path.join(out_dir, f"view_{i:03d}.png")
+        out_path = os.path.join(out_dir, f"view_{i:03d}{suffix}.png")
         Image.fromarray(color).save(out_path)
         print(f"Saved {out_path} ({label})")
 
