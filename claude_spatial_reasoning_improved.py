@@ -319,6 +319,8 @@ Think step-by-step through your reasoning, considering:
 - Block orientations and arrangements
 - How the pieces connect in 3D space
 
+Images 4 and 5 are top down views that might be helpful for understanding the 3d structure.
+
 Provide your detailed reasoning, then on the final line write ONLY the answer number (1, 2, 3, or 4)."""
 
     image_paths = [problem_image_path] + rotated_image_paths

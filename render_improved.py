@@ -105,36 +105,31 @@ def load_mesh(path):
     return mesh
 
 
-def create_enhanced_lighting(scene):
+def create_enhanced_lighting(scene, cam_pose):
     """
-    Create enhanced lighting setup with:
-    - Main directional light (key light)
-    - Fill lights from multiple angles
-    - Subtle ambient lighting
+    Create lighting setup aligned with the camera for consistent, flat-ish illumination:
+    - Main directional light from the camera direction
+    - Soft fill lights from a few other directions to reduce harsh shadows
     """
-    # Key light (main directional from front-top)
+    # Main light: same pose as the camera, so the side facing the camera is always lit
     key_light = pyrender.DirectionalLight(color=[1.0, 1.0, 1.0], intensity=3.0)
-    key_pose = look_at([2, 3, 2], [0, 0, 0], [0, 1, 0])
-    scene.add(key_light, pose=key_pose)
+    scene.add(key_light, pose=cam_pose)
 
-    # Fill light (softer, from opposite side)
-    fill_light = pyrender.DirectionalLight(color=[1.0, 1.0, 1.0], intensity=1.5)
-    fill_pose = look_at([-2, 2, -1], [0, 0, 0], [0, 1, 0])
-    scene.add(fill_light, pose=fill_pose)
+    # Soft fill lights for gentle global illumination
+    fill_intensity = 0.6
+    fill_positions = [
+        [3, 0, 0],
+        [-3, 0, 0],
+        [0, 3, 0],
+        [0, -3, 0],
+    ]
 
-    # Back light (rim lighting for depth)
-    back_light = pyrender.DirectionalLight(color=[1.0, 1.0, 1.0], intensity=1.0)
-    back_pose = look_at([0, 1, -3], [0, 0, 0], [0, 1, 0])
-    scene.add(back_light, pose=back_pose)
-
-    # Subtle side lights for better color definition
-    side_light1 = pyrender.DirectionalLight(color=[1.0, 1.0, 1.0], intensity=0.8)
-    side_pose1 = look_at([3, 0, 0], [0, 0, 0], [0, 1, 0])
-    scene.add(side_light1, pose=side_pose1)
-
-    side_light2 = pyrender.DirectionalLight(color=[1.0, 1.0, 1.0], intensity=0.8)
-    side_pose2 = look_at([-3, 0, 0], [0, 0, 0], [0, 1, 0])
-    scene.add(side_light2, pose=side_pose2)
+    for pos in fill_positions:
+        fill_light = pyrender.DirectionalLight(color=[1.0, 1.0, 1.0], intensity=fill_intensity)
+        # Use different up vectors for vertical vs horizontal lights
+        up_vec = [0, 1, 0] if abs(pos[1]) < 1e-3 else [0, 0, 1]
+        fill_pose = look_at(pos, [0, 0, 0], up_vec)
+        scene.add(fill_light, pose=fill_pose)
 
 
 def render_views_improved(
@@ -159,9 +154,6 @@ def render_views_improved(
     scene = pyrender.Scene(bg_color=[1.0, 1.0, 1.0, 1.0])
     mesh_node = scene.add(pyrender.Mesh.from_trimesh(mesh, smooth=False))
 
-    # Add enhanced lighting
-    create_enhanced_lighting(scene)
-
     # Camera setup
     camera = pyrender.PerspectiveCamera(yfov=np.pi / 3.0)
     renderer = pyrender.OffscreenRenderer(img_size, img_size)
@@ -171,6 +163,9 @@ def render_views_improved(
     cam_pose = np.eye(4)
     cam_pose[2, 3] = dist
     cam_node = scene.add(camera, pose=cam_pose)
+
+    # Add enhanced lighting aligned with the camera
+    create_enhanced_lighting(scene, cam_pose)
 
     # Get strategic views
     if n_views == 12:

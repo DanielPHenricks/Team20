@@ -207,4 +207,5 @@ with open("claude_answers.txt", "w") as f:
         response = solve_problem(f"./screenshots/rotations/{i}.png", f"./screenshots/cropped/{i}.png")
         f.write(f"{i}: {response}\n")
         print(f"Problem {i} solved. Response: {response}")
+        f.flush()
 
