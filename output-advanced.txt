@@ -2,3 +2,347 @@ Spatial Reasoning Results - two-stage mode
 Problems 90-100
 ================================================================================
 
+50: I'll systematically analyze each answer choice by comparing it to the reference object.
+
+## Reference Object Key Features:
+- Tall light blue/gray tower on back-right
+- Central void/opening (U-shaped from top)
+- Purple, teal, pink, bright green, olive, maroon blocks
+- Asymmetric stepped design
+- Approximately 4-5 blocks wide, 3-4 blocks tall
+
+## Analyzing Answer Choice 1:
+Looking at the angled view:
+- Shows a stepped structure tilted to the left
+- I can see pink, olive, red, purple, blue blocks
+- Has a tall blue tower visible
+- Shows depth and complexity
+- Color distribution: Dark blocks on left, lighter/colorful blocks in middle-upper area
+
+## Analyzing Answer Choice 2:
+Looking at the angled view:
+- Also tilted, different orientation than choice 1
+- I can see brown, olive, green, purple, pink blocks
+- Has vertical elements
+- The color pattern seems different from choice 1
+
+## Analyzing Answer Choice 3:
+Looking at the angled view:
+- Shows structure from yet another angle
+- I can see blue blocks (lighter blue), purple, pink, green blocks
+- Has prominent blue tower elements
+- Structure appears to have the stepped quality
+
+## Analyzing Answer Choice 4:
+Looking at the angled view:
+- Tilted in another direction
+- Shows pink, bright green, purple, olive, darker blocks
+- Has blue elements
+- Different perspective than other choices
+
+## Detailed Comparison:
+
+**Choice 3** stands out because:
+- The prominent **light blue tower** is clearly visible on the upper-right portion
+- I can see **purple blocks** in the middle section
+- There's a **pink block** visible
+- **Bright green blocks** are present
+- The **stepped arrangement** matches the reference
+- The spatial relationships appear correct - the blue tower position relative to other colored blocks matches what we'd expect from a rotation
+
+**Choice 1** has similar features but:
+- The blue tower positioning seems slightly different
+- The overall color distribution doesn't quite match when I trace the spatial relationships
+
+**Choice 2** appears to show:
+- Less prominent blue coloring
+- Different color emphasis (more browns/olives dominant)
+- Doesn't match the expected rotation patterns
+
+**Choice 4** shows:
+- Color distribution that doesn't align with expected rotations
+- The blue elements aren't as prominent in the expected locations
+
+## Verification of Choice 3:
+When I trace the key features:
+- Light blue tower: ✓ Positioned correctly for a rotation
+- Purple blocks: ✓ Visible in middle section
+- Pink and green blocks: ✓ Present and properly positioned
+- Stepped profile: ✓ Matches reference
+- Overall proportions: ✓ Correct dimensions
+
+3
+
+============================================================
+
+51: I'll systematically analyze each answer choice by comparing it to the reference object.
+
+## Reference Object Key Features:
+- Purple block: front-left lower area
+- Maroon/burgundy blocks: left-front tower area
+- Tall teal/green block: back-center elevated
+- Navy/dark blue block: centrally located
+- Lime green visible: on left side
+- Gray block: front-right area
+- Detached block visible in top/bottom views
+- Color palette: various greens (olive, teal, dark), purple, maroon, navy
+
+## Analysis of Each Choice:
+
+### **Choice 1 (Far Left):**
+Looking at this orientation:
+- I can see purple blocks prominently on the left side
+- Yellow/tan colored blocks visible
+- Maroon/burgundy blocks present
+- Green blocks in various shades
+- Dark gray/black blocks
+- The arrangement shows blocks in a compact formation
+
+Comparing to reference: The purple positioning looks reasonable, maroon blocks are present, but I need to verify the overall color distribution matches.
+
+### **Choice 2 (Second from Left):**
+This shows:
+- Teal/cyan blocks prominent in the upper portion
+- Dark green blocks
+- Pink/magenta block visible
+- Navy/dark blue blocks
+- Lime green blocks visible at bottom
+- Gray blocks present
+
+Comparing to reference: The pink/magenta block is questionable - the reference has purple and maroon, but this appears more pink. The teal distribution seems different.
+
+### **Choice 3 (Third from Left):**
+This displays:
+- Lime/bright green blocks prominent on top
+- Purple/magenta block visible
+- Yellow/tan block visible on left
+- Gray blocks
+- Dark green blocks
+- Brown/olive blocks
+
+Comparing to reference: The bright lime green on top and yellow blocks are visible. The purple block is present. This arrangement needs careful verification.
+
+### **Choice 4 (Far Right):**
+This shows:
+- Purple/magenta blocks on upper right
+- Yellow/tan block visible
+- Lime green blocks prominent
+- Dark purple/maroon blocks
+- Gray blocks
+- Green blocks in various shades
+
+Comparing to reference: Purple is present, lime green visible, maroon tones present. The spatial arrangement looks promising.
+
+## Detailed Verification:
+
+**Choice 1:** Has purple, maroon, and appropriate greens. The yellow/tan blocks correspond to what might be olive green from a different angle. The configuration matches the reference's asymmetric stepped structure.
+
+**Choice 2:** The pink/magenta tone is too bright compared to the reference's purple. The cyan/teal prominence doesn't match the reference distribution.
+
+**Choice 3:** The bright lime green dominance on top doesn't match - the reference has the tall teal block at back-center, not bright lime on top prominently.
+
+**Choice 4:** Purple positioning and lime green are present, but the overall spatial arrangement seems less consistent with the reference's structure.
+
+## Final Verification of Choice 1:
+- Purple block: visible on left side ✓
+- Maroon blocks: present in the structure ✓
+- Various green shades: olive, dark green visible ✓
+- Gray/black blocks: present ✓
+- Yellow/tan (olive from different lighting): matches ✓
+- Asymmetric stepped structure: matches ✓
+
+1
+
+============================================================
+
+52: I'll systematically analyze each answer choice by comparing it to the reference object.
+
+## Step 1: Analyzing the Reference Object's Key Features
+
+From my analysis, the reference object has these distinctive features:
+- A bright royal blue block in the upper-left area
+- Magenta/bright purple blocks
+- A bright orange/red-brown block
+- A bright lime green block
+- Asymmetric stepped formation
+- Specific color arrangements visible from different angles
+
+## Step 2: Examining Each Answer Choice
+
+### **Answer Choice 1 (Far Left):**
+Looking at the angled view shown:
+- I can see a dark blue block in the upper region
+- Purple/magenta blocks are visible
+- Brown blocks in the lower-left area
+- The arrangement shows a stepped formation
+- Color positions appear consistent with a rotation of the reference object
+- The bright blue block is visible in an upper position
+- The spatial relationships between colors match what would result from rotating the reference
+
+### **Answer Choice 2 (Second from Left):**
+Looking at the angled view:
+- Has brown blocks visible
+- Shows green blocks
+- Purple/blue blocks are present
+- However, checking the spatial relationships more carefully
+- The position of the bright orange block relative to other blocks seems different
+- The stepped pattern orientation appears consistent with a possible rotation
+
+### **Answer Choice 3 (Third from Left):**
+Looking at the angled view:
+- Shows multiple colored blocks including blues, purples, browns
+- Has a green block visible on top
+- The arrangement shows clear stepped levels
+- Checking color relationships: the bright blue block's position relative to purple blocks
+- The orange/brown blocks' positions
+- This appears to match the reference object's color patterns from a rotated perspective
+
+### **Answer Choice 4 (Far Right):**
+Looking at the angled view:
+- Shows browns, grays, and darker blocks
+- Purple/magenta blocks visible
+- Green block present
+- The bright blue block is visible
+- Examining the specific positions and relationships between colors
+
+## Step 3: Detailed Elimination Process
+
+**Testing Choice 1:**
+- The bright blue block is in an upper-left position when viewed from this angle
+- Purple blocks are adjacent as expected
+- Brown blocks form part of the base
+- This matches a possible rotation
+
+**Testing Choice 2:**
+- Checking the relationship between the orange block and the green blocks
+- The stepped formation looks correct
+- Color adjacencies need verification against all reference views
+
+**Testing Choice 3:**
+- The green block on top is prominent
+- Blue block positioning relative to other blocks
+- The brown blocks' arrangement at the base
+- Purple/magenta blocks in mid-section
+- This configuration closely matches expected rotational relationships
+
+**Testing Choice 4:**
+- Similar colors present but checking exact positions
+- The bright blue block's relationship to surrounding colors
+- Overall stepped structure matches
+
+## Step 4: Final Verification
+
+Comparing the most likely candidates (1 and 3) more carefully:
+
+**Choice 1**: When I trace the color positions from the reference object's views and imagine rotating it, the bright blue block, purple blocks, and brown base arrangement matches well with what's shown.
+
+**Choice 3**: The green block prominence on top, with blue and purple blocks in specific positions, also matches a rotational view.
+
+Looking more carefully at the distinctive features:
+- The bright orange/red block's position relative to other blocks
+- The specific arrangement of the bright blue block with adjacent purple blocks
+- The brown blocks' configuration
+
+Choice 1 shows the color relationships and spatial arrangements that most accurately match a rotation of the reference object, particularly in how the bright blue block relates to the purple blocks and how the brown base is configured.
+
+**1**
+
+============================================================
+
+53: I'll systematically analyze each answer choice by comparing it to the reference object.
+
+## Reference Object Key Features:
+- Light blue cube at bottom-left-front corner
+- Large teal/cyan block in the middle-right area
+- Dark purple/black cube at the top
+- Purple/magenta connecting blocks
+- Gray/brown cube (isolated in top view)
+- Dark green blocks in center-left
+- Large dark brown/maroon L-shaped section
+- Dark blue cube visible in certain views
+
+## Step 1: Analyzing Answer Choice 1 (Top-Left)
+
+Looking at the orientation in choice 1:
+- I can see a light blue/cyan cube at the bottom
+- Purple/magenta blocks visible
+- Dark green blocks present
+- Gray/brown cube visible
+- The arrangement shows similar stepped structure
+
+Let me verify color positions:
+- The light blue cube appears in the correct relative position
+- Purple blocks connecting different sections ✓
+- Green blocks in appropriate positions ✓
+- Gray cube present ✓
+
+## Step 2: Analyzing Answer Choice 2 (Top-Right)
+
+This view shows:
+- Light blue cube visible at bottom-left area
+- Red/brown blocks prominent
+- Teal/cyan block visible
+- Purple blocks present
+- Dark blocks at various levels
+
+The spatial arrangement appears consistent with a rotation of the reference object.
+
+## Step 3: Analyzing Answer Choice 3 (Bottom-Left)
+
+This view shows:
+- Purple/magenta blocks visible
+- Dark green blocks
+- Teal/cyan cube visible
+- Gray/brown cube present
+- Dark brown sections
+
+The configuration looks similar to choice 1 but from a different angle.
+
+## Step 4: Analyzing Answer Choice 4 (Bottom-Right)
+
+This view shows:
+- Brown/tan blocks
+- Purple/magenta blocks
+- Green blocks
+- Light blue/cyan block
+- Red blocks
+
+The structure appears more compressed horizontally.
+
+## Detailed Comparison:
+
+**Choice 1**: Shows the structure from what appears to be a Front-Top-Left angle, matching the reference object's diagonal view. The light blue cube, purple connectors, green blocks, and gray cube are all in correct relative positions.
+
+**Choice 2**: This appears to be a different rotation showing the structure from another angle. The colors and arrangements match the reference.
+
+**Choice 3**: Very similar to choice 1, showing the structure from a slightly different rotational angle. The key features align with the reference.
+
+**Choice 4**: Shows the structure from yet another angle. Let me verify the color relationships more carefully.
+
+## Verification Process:
+
+Comparing each choice with the reference views (Images 2-13):
+
+- **Choice 1**: Matches the Front-Top-Left view (Image 11) very closely
+- **Choice 2**: Could match a Front-Bottom-Right type rotation
+- **Choice 3**: Also appears similar to a rotated version
+- **Choice 4**: Shows a different perspective
+
+Looking more carefully at the **distinctive light blue cube** and its relationship to other blocks:
+- In the reference, the light blue is at the bottom-left-front corner
+- Choice 1 shows this cube in the correct position relative to the purple and green blocks
+- Choice 3 also shows similar positioning but from a different angle
+
+## Final Verification:
+
+Examining the **teal/cyan block** position and the **gray/brown cube** isolation:
+- Choice 1 correctly shows the spatial relationships
+- The gray cube's position relative to the main structure matches
+- The teal block's position between sections is correct
+
+After careful analysis, **Choice 1** most accurately represents a rotation of the reference object, matching the Front-Top-Left perspective shown in Image 11.
+
+1
+
+============================================================
+

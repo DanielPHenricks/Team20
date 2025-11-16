@@ -272,6 +272,7 @@ Step 2: For each choice, check if it could be a rotation of the reference object
    - Spatial relationships between colored blocks
 Step 3: Eliminate choices that have mismatched colors or impossible configurations
 Step 4: Verify your final answer by confirming it matches the reference from all angles
+MOST IMPORTANT: Please only use the 6th through the 11th view for your analysis. Also consider shape arrangement more than color arrangement when making a decision.
 
 IMPORTANT:
 - Pay close attention to the exact colors and their positions
@@ -311,8 +312,7 @@ SYSTEMATIC APPROACH:
    - Compare its visible faces with the reference object
    - Check if the color arrangements match
    - Verify the spatial relationships between blocks
-3. Eliminate choices with mismatched colors or impossible configurations
-4. Confirm your answer by double-checking color patterns
+    - Check each set of neighbors of the answer choice with the arrangement in the original image along with the multiple angles to find counterexamples where the answer is wrong.
 
 Think step-by-step through your reasoning, considering:
 - Exact color positions on each face
