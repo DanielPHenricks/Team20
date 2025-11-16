@@ -253,14 +253,18 @@ def solve_problem_two_stage(problem_image_path, cutout_image_path, problem_num=N
     rotated_image_paths = generate_rotated_images(three_d_model_path, outdir="renders", n=12, img_size=768, problem_num=problem_num)
 
     # STAGE 1: Build mental model
-    stage1_prompt = """Analyze the reference object (the object shown in the first few images) systematically:
+    stage1_prompt = """Analyze the reference object focusing on SPATIAL STRUCTURE:
 
-1. Describe the overall shape and structure
-2. For each visible face, list the colors of blocks you see
-3. Identify any unique or distinguishing features (like specific color combinations or block arrangements)
-4. Note the spatial relationships between different colored blocks
+PRIORITY: Study the Top and Bottom views (images 5-6) first to understand the 3D structure.
 
-Be thorough and systematic in your description."""
+Map out:
+1. Which blocks are adjacent to which other blocks (neighbor relationships)
+2. The overall 3D configuration and how blocks connect
+3. Unique structural features (protruding blocks, indentations, stacking patterns)
+
+Secondary: Note colors, but focus on spatial adjacency over exact color matching.
+
+Be concise but capture the 3D structure."""
 
     print("Stage 1: Building mental model...")
     reference_images = [cutout_image_path] + rotated_image_paths[:6]  # Use first 6 views
@@ -268,33 +272,25 @@ Be thorough and systematic in your description."""
     print(f"Stage 1 description:\n{description}\n")
 
     # STAGE 2: Solve the puzzle using the mental model
-    stage2_prompt = f"""Now solve this rotation puzzle using your analysis.
+    stage2_prompt = f"""Solve this rotation puzzle using your spatial analysis.
 
-REFERENCE OBJECT DESCRIPTION (from your analysis):
+REFERENCE STRUCTURE:
 {description}
 
-THE PUZZLE:
-The first image shows the puzzle question with 4 answer choices (numbered 1-4 from left to right).
-The remaining images show the reference object from multiple angles.
+TASK: Which answer choice (1-4, left to right) in the first image matches the reference object?
 
-YOUR TASK:
-Use a systematic elimination process:
+PRIORITY ANALYSIS:
+- Use Top/Bottom views (images 5-6) to verify 3D structure
+- Focus on BLOCK ADJACENCY: Do neighbor relationships match?
+- Check spatial configuration, not just individual colors
 
-Step 1: Examine each answer choice (1, 2, 3, 4)
-Step 2: For each choice, check if it could be a rotation of the reference object by comparing:
-   - Color patterns on visible faces
-   - Block arrangements and positions
-   - Spatial relationships between colored blocks
-Step 3: Eliminate choices that have mismatched colors or impossible configurations
-Step 4: Verify your final answer by confirming it matches the reference from all angles
-MOST IMPORTANT: Please only use the 6th through the 11th view for your analysis. Also consider shape arrangement more than color arrangement when making a decision.
+ELIMINATION:
+For each choice, find spatial contradictions:
+- Does it have the same blocks adjacent to each other?
+- Does the 3D structure match the reference?
+- Are there impossible configurations?
 
-IMPORTANT:
-- Pay close attention to the exact colors and their positions
-- Consider that rotations preserve the spatial relationships between blocks
-- Some views may look similar but have subtle differences in color placement
-
-Provide your reasoning step-by-step, then end with ONLY the answer number (1, 2, 3, or 4) on the last line."""
+Eliminate mismatches quickly. Provide brief reasoning, then final line: ONLY the number (1, 2, 3, or 4)."""
 
     all_images = [problem_image_path] + rotated_image_paths
     print(f"Stage 2: Solving puzzle with {len(all_images)} images...")
@@ -325,28 +321,27 @@ def solve_problem_single_stage(problem_image_path, cutout_image_path, problem_nu
     rotated_image_paths = generate_rotated_images(three_d_model_path, outdir="renders", n=12, img_size=768, problem_num=problem_num)
 
     # Improved single-stage prompt
-    prompt = """Solve this rotation puzzle systematically:
+    prompt = """Solve this rotation puzzle by identifying which answer choice (1, 2, 3, or 4, left to right) matches the reference object.
 
-The first image shows the puzzle: which answer choice (1, 2, 3, or 4, numbered left to right) can be created by rotating the reference object?
+The first image shows the puzzle. The remaining images show the reference object from labeled angles.
 
-The remaining images show the reference object from multiple labeled angles.
+CRITICAL: Focus on SPATIAL RELATIONSHIPS between blocks, not just colors.
 
-SYSTEMATIC APPROACH:
-1. Study the reference object's color pattern from all provided views
-2. For each answer choice (1, 2, 3, 4):
-   - Compare its visible faces with the reference object
-   - Check if the color arrangements match
-   - Verify the spatial relationships between blocks
-    - Check each set of neighbors of the answer choice with the arrangement in the original image along with the multiple angles to find counterexamples where the answer is wrong.
+PRIORITY VIEWS:
+- Images 5-6 (Top/Bottom views): Use these to understand the 3D structure and block arrangement
+- Corner views: Verify how blocks connect in 3D space
 
-Think step-by-step through your reasoning, considering:
-- Exact color positions on each face
-- Block orientations and arrangements
-- How the pieces connect in 3D space
+METHOD:
+1. Study Top/Bottom views to map the 3D structure
+2. For each answer choice, identify spatial mismatches:
+   - Which blocks are adjacent to which other blocks?
+   - Are the neighbor relationships the same as the reference?
+   - Does the overall 3D configuration match?
+3. Eliminate choices with spatial contradictions
 
-Images 4 and 5 are top down views that might be helpful for understanding the 3d structure.
+Focus on BLOCK ADJACENCY and 3D STRUCTURE over individual colors.
 
-Provide your detailed reasoning, then on the final line write ONLY the answer number (1, 2, 3, or 4)."""
+Answer with brief reasoning, then final line: ONLY the number (1, 2, 3, or 4)."""
 
     image_paths = [problem_image_path] + rotated_image_paths
     print(f"Solving with {len(image_paths)} images...")
