@@ -6,8 +6,6 @@ import base64
 from typing import List, Optional
 from render_improved import render_views_improved
 from PIL import Image, ImageDraw, ImageFont
-from concurrent.futures import ThreadPoolExecutor, as_completed
-import threading
 
 from anthropic import Anthropic
 from dotenv import load_dotenv
@@ -18,9 +16,6 @@ import numpy as np
 
 # load .env file
 load_dotenv()
-
-# Thread-safe file writing lock
-write_lock = threading.Lock()
 
 
 def encode_image_base64(path: str) -> str:
@@ -235,13 +230,12 @@ def solve_problem_two_stage(problem_image_path, cutout_image_path, problem_num=N
     """
     Improved two-stage reasoning approach for better accuracy.
     """
-    # Get the meshy model - use problem-specific output path for parallel processing
-    three_d_model_path = f"./tmp/preview_model_{problem_num}.glb" if problem_num else "./tmp/preview_model.glb"
+    # Get the meshy model
+    three_d_model_path = "./tmp/preview_model.glb"
     get_meshy_model(cutout_image_path, three_d_model_path)
 
-    # Generate the multiple rotations with improved settings - use problem-specific directory
-    render_dir = f"renders_problem_{problem_num}" if problem_num else "renders"
-    rotated_image_paths = generate_rotated_images(three_d_model_path, outdir=render_dir, n=12, img_size=768, problem_num=problem_num)
+    # Generate the multiple rotations with improved settings
+    rotated_image_paths = generate_rotated_images(three_d_model_path, outdir="renders", n=12, img_size=768, problem_num=problem_num)
 
     # STAGE 1: Build mental model
     stage1_prompt = """Analyze the reference object (the object shown in the first few images) systematically:
@@ -297,13 +291,12 @@ def solve_problem_single_stage(problem_image_path, cutout_image_path, problem_nu
     """
     Original single-stage approach but with improved prompt.
     """
-    # Get the meshy model - use problem-specific output path for parallel processing
-    three_d_model_path = f"./tmp/preview_model_{problem_num}.glb" if problem_num else "./tmp/preview_model.glb"
+    # Get the meshy model
+    three_d_model_path = "./tmp/preview_model.glb"
     get_meshy_model(cutout_image_path, three_d_model_path)
 
-    # Generate the multiple rotations with improved settings - use problem-specific directory
-    render_dir = f"renders_problem_{problem_num}" if problem_num else "renders"
-    rotated_image_paths = generate_rotated_images(three_d_model_path, outdir=render_dir, n=12, img_size=768, problem_num=problem_num)
+    # Generate the multiple rotations with improved settings
+    rotated_image_paths = generate_rotated_images(three_d_model_path, outdir="renders", n=12, img_size=768, problem_num=problem_num)
 
     # Improved single-stage prompt
     prompt = """Solve this rotation puzzle systematically:
@@ -334,42 +327,13 @@ Provide your detailed reasoning, then on the final line write ONLY the answer nu
     return response
 
 
-def solve_single_problem(problem_num, mode, solve_func):
-    """
-    Wrapper function to solve a single problem (for parallel execution).
-    Returns tuple of (problem_num, result_string, success_bool)
-    """
-    try:
-        print(f"\n[Problem {problem_num}] Starting ({mode} mode)...")
-
-        response = solve_func(
-            f"./screenshots/rotations/{problem_num}.png",
-            f"./screenshots/cropped/{problem_num}.png",
-            problem_num=problem_num
-        )
-
-        result = f"{problem_num}: {response}\n\n{'='*60}\n\n"
-        print(f"[Problem {problem_num}] ✓ Completed successfully")
-        return (problem_num, result, True)
-
-    except Exception as e:
-        error_msg = f"ERROR: {str(e)}"
-        result = f"{problem_num}: {error_msg}\n\n{'='*60}\n\n"
-        print(f"[Problem {problem_num}] ✗ Failed: {error_msg}")
-        return (problem_num, result, False)
-
-
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Improved spatial reasoning solver with parallel processing")
+    parser = argparse.ArgumentParser(description="Improved spatial reasoning solver (sequential)")
     parser.add_argument("--mode", choices=["single", "two-stage"], default="two-stage",
                         help="Reasoning mode: single-stage or two-stage")
     parser.add_argument("--start", type=int, default=1, help="Starting problem number")
     parser.add_argument("--end", type=int, default=29, help="Ending problem number")
     parser.add_argument("--output", default="output-advanced.txt", help="Output file")
-    parser.add_argument("--workers", type=int, default=3,
-                        help="Number of parallel workers (default: 3, increase if you have API rate limit headroom)")
-    parser.add_argument("--sequential", action="store_true",
-                        help="Run sequentially instead of in parallel (for debugging)")
 
     args = parser.parse_args()
 
@@ -381,7 +345,7 @@ if __name__ == "__main__":
     print(f"Mode: {args.mode}")
     print(f"Problems: {args.start} to {args.end} ({len(problem_numbers)} total)")
     print(f"Output: {args.output}")
-    print(f"Parallel workers: {'Sequential' if args.sequential else args.workers}")
+    print(f"Processing: Sequential (to avoid threading issues with PyRender)")
     print(f"{'='*80}\n")
 
     # Create output file with header
@@ -390,60 +354,40 @@ if __name__ == "__main__":
         f.write(f"Problems {args.start}-{args.end}\n")
         f.write(f"{'='*80}\n\n")
 
-    results = {}
+    success_count = 0
 
-    if args.sequential:
-        # Sequential execution (original behavior)
-        for i in problem_numbers:
-            problem_num, result, success = solve_single_problem(i, args.mode, solve_func)
-            results[problem_num] = result
+    for i in problem_numbers:
+        print(f"\n{'='*60}")
+        print(f"Solving problem {i}/{args.end} using {args.mode} mode...")
+        print(f"{'='*60}")
 
-            # Write immediately
-            with write_lock:
-                with open(args.output, "a") as f:
-                    f.write(result)
-    else:
-        # Parallel execution
-        with ThreadPoolExecutor(max_workers=args.workers) as executor:
-            # Submit all tasks
-            future_to_problem = {
-                executor.submit(solve_single_problem, i, args.mode, solve_func): i
-                for i in problem_numbers
-            }
+        try:
+            response = solve_func(
+                f"./screenshots/rotations/{i}.png",
+                f"./screenshots/cropped/{i}.png",
+                problem_num=i
+            )
 
-            # Process completed tasks as they finish
-            completed = 0
-            total = len(problem_numbers)
+            with open(args.output, "a") as f:
+                f.write(f"{i}: {response}\n")
+                f.write(f"\n{'='*60}\n\n")
 
-            for future in as_completed(future_to_problem):
-                problem_num = future_to_problem[future]
-                try:
-                    problem_num, result, success = future.result()
-                    results[problem_num] = result
-                    completed += 1
+            print(f"Problem {i} ✓ Completed successfully")
+            print(f"Response preview: {response[:200]}...")
+            success_count += 1
 
-                    print(f"\nProgress: {completed}/{total} problems completed ({completed*100//total}%)")
+        except Exception as e:
+            error_msg = f"ERROR: {str(e)}"
 
-                    # Write result immediately (thread-safe)
-                    with write_lock:
-                        with open(args.output, "a") as f:
-                            f.write(result)
+            with open(args.output, "a") as f:
+                f.write(f"{i}: {error_msg}\n")
+                f.write(f"\n{'='*60}\n\n")
 
-                except Exception as e:
-                    print(f"[Problem {problem_num}] Unexpected error: {e}")
-                    error_result = f"{problem_num}: UNEXPECTED ERROR: {str(e)}\n\n{'='*60}\n\n"
-                    results[problem_num] = error_result
-
-                    with write_lock:
-                        with open(args.output, "a") as f:
-                            f.write(error_result)
+            print(f"Problem {i} ✗ Failed: {error_msg}")
 
     # Print summary
     print(f"\n{'='*80}")
     print(f"All problems completed!")
     print(f"Results written to: {args.output}")
-
-    # Count successes
-    success_count = sum(1 for r in results.values() if "ERROR" not in r)
     print(f"Successfully solved: {success_count}/{len(problem_numbers)}")
     print(f"{'='*80}\n")
