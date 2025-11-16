@@ -108,12 +108,11 @@ def get_meshy_model(image_path, output_file_path):
         # Using data URI example
         # image_url: f'data:image/png;base64,{YOUR_BASE64_ENCODED_IMAGE_DATA}',
         "image_url": f"data:image/png;base64,{encode_image_base64(image_path)}",
-        "enable_pbr": True,
         "should_remesh": True,
-        "should_texture": False,
+        "should_texture": True, 
+        "enable_pbr": True,
     }
     headers = {
-        # TODO
         "Authorization": f"Bearer {os.getenv('MESHY_API_KEY')}",
     }
 
@@ -122,6 +121,7 @@ def get_meshy_model(image_path, output_file_path):
         headers=headers,
         json=payload,
     )
+
     response.raise_for_status()
 
     response_task_id = response.json()["result"]
@@ -167,7 +167,7 @@ def get_meshy_model(image_path, output_file_path):
     print("Preview model downloaded.")
 
 
-def generate_rotated_images(path, outdir="renders", n=6):
+def generate_rotated_images(path, outdir="renders", n=8):
     """
     Generate `n` rotated images of the 3D model at `path` and save them to `outdir`.
     """
@@ -193,20 +193,18 @@ def solve_problem(problem_image_path, cutout_image_path):
     rotated_image_paths = generate_rotated_images(three_d_model_path)
 
     # send to claude with the rotated images
-    prompt = "Solve this rotation puzzle and only provide the answer option (1, 2, 3 or 4), numbered from left to right. Only provide the answer option number without any additional text."
+    prompt = "Solve this rotation puzzle and only provide the answer option (1, 2, 3 or 4), numbered from left to right. Only provide the answer option number without any additional text. The first image shows the problem to solve, and the rest are the rotated views of the 3D model of the given shape. Use those rotated views to help solve the problem. Please consider the orientations of the blocks and color of the blocks and try to match them to the answer choices. Reason why your answer is correct based on the colors and orientations of the blocks."
     image_paths = [problem_image_path] + rotated_image_paths
+    print(f"Image paths sent to Claude: {image_paths}")
     response = send_to_claude(
         prompt, image_paths=image_paths, model_id="claude-sonnet-4-5"
     )
     return response
 
+with open("claude_answers.txt", "wb") as f:
+    for i in range(1, 30):
+        print(f"Solving problem {i}...")
+        response = solve_problem(f"./screenshots/rotations/{i}.png", f"./screenshots/cropped/{i}.png")
+        f.write(f"{i}: {response}\n")
+        print(f"Problem {i} solved. Response: {response}")
 
-# solve_problem("./screenshots/rotations/1.png", "./screenshots/cropped/1.png")
-
-if __name__ == "__main__":
-    result = generate_rotated_images(
-        "./tmp/preview_model.glb", outdir="./test_renders", n=8
-    )
-    print(f"Generated images: {result}")
-    # modelResponse = solve_problem("./rotations", "./test_renders")
-    # print(f"Model response: {modelResponse}")
