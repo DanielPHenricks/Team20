@@ -37,6 +37,7 @@ def look_at(eye, target, up):
 
     return mat
 
+
 # Helper function: rotation_from_vectors
 def rotation_from_vectors(vec_from, vec_to):
     """
@@ -165,19 +166,21 @@ def render_views(
     cam_pose[2, 3] = dist  # camera position in world coords
     cam_node = scene.add(camera, pose=cam_pose)
 
+    target_dir = np.array([0.0, 0.0, -1.0])  # camera looks along -Z
+
     if n_views == 8:
         # Use the 8 corners of a cube as view directions
         corners = [
             (-1, -1, -1),
-            (-1, -1,  1),
-            (-1,  1, -1),
-            (-1,  1,  1),
-            ( 1, -1, -1),
-            ( 1, -1,  1),
-            ( 1,  1, -1),
-            ( 1,  1,  1),
+            (-1, -1, 1),
+            (-1, 1, -1),
+            (-1, 1, 1),
+            (1, -1, -1),
+            (1, -1, 1),
+            (1, 1, -1),
+            (1, 1, 1),
         ]
-        target_dir = np.array([0.0, 0.0, -1.0])  # camera looks along -Z
+
     else:
         corners = None  # will use simple Y-rotation
 
@@ -206,9 +209,7 @@ def render_views(
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Render N PNG views from a GLB file."
-    )
+    parser = argparse.ArgumentParser(description="Render N PNG views from a GLB file.")
     parser.add_argument("glb_path", help="Path to the .glb file")
     parser.add_argument(
         "-n",
