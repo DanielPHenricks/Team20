@@ -201,7 +201,7 @@ def solve_problem(problem_image_path, cutout_image_path):
     )
     return response
 
-with open("claude_answers.txt", "wb") as f:
+with open("claude_answers.txt", "w") as f:
     for i in range(1, 30):
         print(f"Solving problem {i}...")
         response = solve_problem(f"./screenshots/rotations/{i}.png", f"./screenshots/cropped/{i}.png")
